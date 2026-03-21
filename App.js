@@ -3,6 +3,8 @@ import { Ionicons } from "@expo/vector-icons";
 import Card from "./assets/components/Card";
 import { useFonts } from "expo-font";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { ScrollView } from "react-native";
+import TabIcon from "./assets/components/TabIcon";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -61,6 +63,14 @@ export default function App() {
         <Image source={require("./assets/img/pd2.png")}></Image>
         <Image source={require("./assets/img/pd3.png")}></Image>
       </View>
+      {/* BOTTOM TAB */}
+      <View style={styles.tabBar}>
+        <TabIcon icon={require("./assets/img/tabicon1.png")} active />
+        <TabIcon icon={require("./assets/img/tabicon2.png")} />
+        <TabIcon icon={require("./assets/img/tabicon3.png")} />
+        <TabIcon icon={require("./assets/img/tabicon4.png")} />
+        <TabIcon icon={require("./assets/img/tabicon5.png")} />
+      </View>
     </View>
   );
 }
@@ -70,6 +80,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingHorizontal: 16,
+    paddingBottom: 80,
+    position: "relative",
   },
   content: {
     marginTop: 63,
@@ -95,7 +107,7 @@ const styles = StyleSheet.create({
   avatar: { borderRadius: 66.909 },
   insight: {
     color: "#363636",
-    fontFamily: "HelveticaNowBold", // tên bạn load bằng expo-font
+    fontFamily: "HelveticaNowBold",
     fontSize: 18,
     fontWeight: "400",
     letterSpacing: 0.54,
@@ -121,5 +133,28 @@ const styles = StyleSheet.create({
     marginTop: 31,
     flexDirection: "row",
     gap: 25,
+  },
+  tabBar: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+
+    height: 105,
+    backgroundColor: "#fff",
+    borderRadius: 40,
+
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+
+    // 👇 quan trọng để nổi lên
+    elevation: 20, // Android
+    zIndex: 999, // iOS
+
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
   },
 });
