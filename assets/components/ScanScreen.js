@@ -1,13 +1,22 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 
 const ScanScreen = () => {
+  const navigation = useNavigation();
+  const [loaded, error] = useFonts({
+    HelveticaNowDisplay: require("../fonts/HelveticaNowDisplay.otf"),
+  });
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backBtn}
+        >
           <Ionicons name="chevron-back" size={22} color="#333" />
         </TouchableOpacity>
       </View>

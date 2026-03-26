@@ -1,10 +1,17 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-
+import { useFonts } from "expo-font";
+import { useEffect } from "react";
 import Card from "./Card";
 
 import TabIcon from "./TabIcon";
+import { useNavigation } from "@react-navigation/native";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
+  const navigation = useNavigation();
+  const [loaded, error] = useFonts({
+    HelveticaNowDisplay: require("../fonts/HelveticaNowDisplay.otf"),
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -54,11 +61,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.tabBar}>
-        <TabIcon
-          onPress={() => navigation.navigate("Home")}
-          icon={require("../img/tabicon1.png")}
-          active={true}
-        />
+        <TabIcon icon={require("../img/home.png")} isActive1={true} />
         <TabIcon icon={require("../img/tabicon2.png")} />
 
         <TabIcon
