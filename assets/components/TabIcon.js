@@ -1,17 +1,22 @@
 import { TouchableOpacity, Image, StyleSheet, View } from "react-native";
 
-const TabIcon = ({ icon, active }) => {
+const TabIcon = ({ icon, active = false, onPress }) => {
+  const isActive = active === true || active === "true";
+
   return (
-    <TouchableOpacity>
-      <View style={styles.icon_wrapper}>
-        <Image
-          source={icon}
-          style={[styles.icon, { tintColor: active ? "#4da6ff" : "#aaa" }]}
-        ></Image>
+    <TouchableOpacity onPress={onPress}>
+      <View
+        style={[
+          styles.icon_wrapper,
+          { backgroundColor: isActive ? "#D0EDFBCC" : "#fff" },
+        ]}
+      >
+        <Image source={icon} style={styles.icon} />
       </View>
     </TouchableOpacity>
   );
 };
+
 const styles = StyleSheet.create({
   icon: {
     width: 24,
@@ -24,4 +29,5 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
 });
+
 export default TabIcon;
